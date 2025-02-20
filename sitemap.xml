@@ -1,45 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/404.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/00-intro.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/CODE_OF_CONDUCT.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/01-intro-to-r.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/LICENSE.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/02-starting-with-data.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/index.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/03-dplyr.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/404.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/04-tidyr.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/05-ggplot2.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/LICENSE.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/06-rmarkdown.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/index.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/07-json.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/introduction.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/404.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/profiles.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/instructor/reference.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/introduction.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/aio.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/profiles.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/images.html</loc>
   </url>
   <url>
-    <loc>https://NoahV17.github.io/file1a494aabf6/reference.html</loc>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/00-intro.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/01-intro-to-r.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/02-starting-with-data.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/03-dplyr.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/04-tidyr.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/05-ggplot2.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/06-rmarkdown.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/07-json.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/404.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/aio.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/images.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://ml4sts.github.io/data-empowerment-lessons/reference.html</loc>
   </url>
 </urlset>
