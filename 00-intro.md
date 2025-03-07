@@ -145,19 +145,20 @@ freely available to extend R's native capabilities.
 <figure>
 
 <div class="row">
-:::: {.column}
+
+<div class="col-md-6">
 
 <img src="fig/r-manual.jpeg" alt="RStudio extends what R can do, and makes it easier to write R code and interact with R." width="100%" style="display: block; margin: auto;" />
 
-::::
+</div>
 
-:::: {.column}
+<div class="col-md-6">
 
 <img src="fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of RStudio" width="100%" style="display: block; margin: auto;" />
 
-::::
+</div>
 
-:::::
+</div>
 
 <figcaption>
 
