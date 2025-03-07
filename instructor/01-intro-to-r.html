@@ -478,23 +478,23 @@ with a number (<code>2x</code> is not valid, but <code>x2</code> is). R
 is case sensitive (e.g., <code>age</code> is different from
 <code>Age</code>). There are some names that cannot be used because they
 are the names of fundamental objects in R (e.g., <code>if</code>,
-<code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">R’s
-reserved words</a> for a complete list). In general, even if it’s
-allowed, it’s best to not use them (e.g., <code>c</code>,
-<code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>,
-<code>weights</code>). If in doubt, check the help to see if the name is
-already in use. It’s also best to avoid dots (<code>.</code>) within an
-object name as in <code>my.dataset</code>. There are many objects in R
-with dots in their names for historical reasons, but because dots have a
-special meaning in R (for methods) and other programming languages, it’s
-best to avoid them. The recommended writing style is called snake_case,
-which implies using only lowercaseletters and numbers and separating
-each word with underscores (e.g., animals_weight, average_income). It is
-also recommended to use nouns for object names, and verbs for function
-names. It’s important to be consistent in the styling of your code
-(where you put spaces, how you name objects, etc.). Using a consistent
-coding style makes your code clearer to read for your future self and
-your collaborators. In R, three popular style guides are <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a>, <a href="https://jef.works/R-style-guide/" class="external-link">Jean Fan’s</a> and the <a href="https://style.tidyverse.org/" class="external-link">tidyverse’s</a>. The tidyverse’s is
+<code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html" class="external-link">here</a>
+for a complete list). In general, even if it’s allowed, it’s best to not
+use them (e.g., <code>c</code>, <code>T</code>, <code>mean</code>,
+<code>data</code>, <code>df</code>, <code>weights</code>). If in doubt,
+check the help to see if the name is already in use. It’s also best to
+avoid dots (<code>.</code>) within an object name as in
+<code>my.dataset</code>. There are many objects in R with dots in their
+names for historical reasons, but because dots have a special meaning in
+R (for methods) and other programming languages, it’s best to avoid
+them. The recommended writing style is called snake_case, which implies
+using only lowercaseletters and numbers and separating each word with
+underscores (e.g., animals_weight, average_income). It is also
+recommended to use nouns for object names, and verbs for function names.
+It’s important to be consistent in the styling of your code (where you
+put spaces, how you name objects, etc.). Using a consistent coding style
+makes your code clearer to read for your future self and your
+collaborators. In R, three popular style guides are <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a>, <a href="https://jef.works/R-style-guide/" class="external-link">Jean Fan’s</a> and the <a href="https://style.tidyverse.org/" class="external-link">tidyverse’s</a>. The tidyverse’s is
 very comprehensive and may seem overwhelming at first. You can install
 the <a href="https://github.com/jimhester/lintr" class="external-link"><strong><code>lintr</code></strong></a>
 package to automatically check for issues in the styling of your
