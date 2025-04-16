@@ -1,0 +1,84 @@
+Package: varnish
+Title: Front-end for The Carpentries Lesson Infrastructure
+Version: 1.0.5
+Authors@R: c(
+    person(given = "Robert",
+           family = "Davey",
+           role = c("aut", "cre"),
+           email = "robertdavey@carpentries.org",
+           comment = c(ORCID = "0000-0002-5589-7754")),
+    person(given = "Erin",
+           family = "Becker",
+           role = c("aut"),
+           email = "erinbecker@carpentries.org",
+           comment = c(ORCID = "0000-0002-6832-0233")),
+    person(given = "Zhian N.",
+           family = "Kamvar",
+           role = c("aut"),
+           email = "zkamvar@carpentries.org",
+           comment = c(ORCID = "0000-0003-1458-7108")),
+    person(given = "Ben",
+           family = "Companjen",
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0002-7023-9047")),
+    person(given = "Toby",
+           family = "Hodges",
+           role = c("ctb"),
+           email = "tobyhodges@carpentries.org",
+           comment = c(ORCID = "0000-0003-1766-456X")),
+    person(given = "François",
+           family = "Michonneau",
+           role = c("ctb"),
+           email = "francois@carpentries.org"),
+    person(given = "Robert",
+           family = "Chisholm",
+           role = c("ctb"),
+           email = "robert.chisholm@sheffield.ac.uk",
+           comment = c(ORCID = "0000-0003-3379-9042")),
+    person(given = "Joel H.",
+           family = "Nitta",
+           role = c("ctb"),
+           email = "joelnitta@gmail.com",
+           comment = c(ORCID = "0000-0003-4719-7472")),
+    person(given = "Dimitrios",
+           family = "Theodorakis",
+           role = c("ctb"),
+           email = "astrodimitrios@gmail.com"),
+    person(given = "Olexandr",
+           family = "Konovalov",
+           role = c("ctb"),
+           email = "obk1@st-andrews.ac.uk",
+           comment = c(ORCID = "0000-0001-5299-3292")),
+    person(given = "Matthew",
+           family = "Armstrong",
+           role = c("ctb"),
+           email = "cs.matthewarmstrong@gmail.com"),       
+    person()
+    )
+Description: This package does nothing but contain template HTML CSS
+        and JS files.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+URL: https://carpentries.github.io/varnish/
+BugReports: https://github.com/carpentries/varnish/issues/
+Repository: https://carpentries.r-universe.dev
+RemoteUrl: https://github.com/carpentries/varnish
+RemoteRef: 1.0.5
+RemoteSha: ab51231e5ff374108c93a27c151fd6c9d11b848e
+NeedsCompilation: no
+Packaged: 2025-04-10 05:19:43 UTC; root
+Author: Robert Davey [aut, cre] (<https://orcid.org/0000-0002-5589-7754>),
+  Erin Becker [aut] (<https://orcid.org/0000-0002-6832-0233>),
+  Zhian N. Kamvar [aut] (<https://orcid.org/0000-0003-1458-7108>),
+  Ben Companjen [ctb] (<https://orcid.org/0000-0002-7023-9047>),
+  Toby Hodges [ctb] (<https://orcid.org/0000-0003-1766-456X>),
+  François Michonneau [ctb],
+  Robert Chisholm [ctb] (<https://orcid.org/0000-0003-3379-9042>),
+  Joel H. Nitta [ctb] (<https://orcid.org/0000-0003-4719-7472>),
+  Dimitrios Theodorakis [ctb],
+  Olexandr Konovalov [ctb] (<https://orcid.org/0000-0001-5299-3292>),
+  Matthew Armstrong [ctb]
+Maintainer: Robert Davey <robertdavey@carpentries.org>
+Built: R 4.4.3; ; 2025-04-10 05:20:55 UTC; unix
