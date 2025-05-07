@@ -1,0 +1,102 @@
+[
+  {
+    "precinct_id": 2866,
+    "polling_place": "WARD_A",
+    "scanner_id": "SCANNER_A",
+    "arrival_summary": {
+      "total_arrivals": 3,
+      "first_arrival": "2018-11-06 07:00:00",
+      "last_arrival": "2018-11-06 07:04:00"
+    }
+  },
+  {
+    "precinct_id": 2867,
+    "polling_place": "WARD_B",
+    "scanner_id": "SCANNER_B",
+    "arrival_summary": {
+      "total_arrivals": 3,
+      "first_arrival": "2018-11-06 08:00:00",
+      "last_arrival": "2018-11-06 08:04:00"
+    }
+  },
+  {
+    "precinct_id": 2868,
+    "polling_place": "WARD_C",
+    "scanner_id": "SCANNER_C",
+    "arrival_summary": {
+      "total_arrivals": 5,
+      "first_arrival": "2018-11-06 09:15:00",
+      "last_arrival": "2018-11-06 09:40:00"
+    }
+  },
+  {
+    "precinct_id": 2869,
+    "polling_place": "WARD_D",
+    "scanner_id": "SCANNER_D",
+    "arrival_summary": {
+      "total_arrivals": 2,
+      "first_arrival": "2018-11-06 10:05:00",
+      "last_arrival": "2018-11-06 10:12:00"
+    }
+  },
+  {
+    "precinct_id": 2870,
+    "polling_place": "WARD_E",
+    "scanner_id": "SCANNER_E",
+    "arrival_summary": {
+      "total_arrivals": 4,
+      "first_arrival": "2018-11-06 11:20:00",
+      "last_arrival": "2018-11-06 11:33:00"
+    }
+  },
+  {
+    "precinct_id": 2871,
+    "polling_place": "WARD_F",
+    "scanner_id": "SCANNER_F",
+    "arrival_summary": {
+      "total_arrivals": 6,
+      "first_arrival": "2018-11-06 12:10:00",
+      "last_arrival": "2018-11-06 12:38:00"
+    }
+  },
+  {
+    "precinct_id": 2872,
+    "polling_place": "WARD_G",
+    "scanner_id": "SCANNER_G",
+    "arrival_summary": {
+      "total_arrivals": 3,
+      "first_arrival": "2018-11-06 13:45:00",
+      "last_arrival": "2018-11-06 14:00:00"
+    }
+  },
+  {
+    "precinct_id": 2873,
+    "polling_place": "WARD_H",
+    "scanner_id": "SCANNER_H",
+    "arrival_summary": {
+      "total_arrivals": 7,
+      "first_arrival": "2018-11-06 14:05:00",
+      "last_arrival": "2018-11-06 14:50:00"
+    }
+  },
+  {
+    "precinct_id": 2874,
+    "polling_place": "WARD_I",
+    "scanner_id": "SCANNER_I",
+    "arrival_summary": {
+      "total_arrivals": 4,
+      "first_arrival": "2018-11-06 15:30:00",
+      "last_arrival": "2018-11-06 15:47:00"
+    }
+  },
+  {
+    "precinct_id": 2875,
+    "polling_place": "WARD_J",
+    "scanner_id": "SCANNER_J",
+    "arrival_summary": {
+      "total_arrivals": 5,
+      "first_arrival": "2018-11-06 16:00:00",
+      "last_arrival": "2018-11-06 16:25:00"
+    }
+  }
+]
