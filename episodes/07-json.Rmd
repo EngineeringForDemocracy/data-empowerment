@@ -8,212 +8,267 @@ editor_options:
     wrap: 72
 ---
 
-```{r setup, include=FALSE}
-source("data/download_data.R")
-library(tidyverse)
-```
+:::: instructor
 
-::: instructor
 -   This is an optional lessons intended to introduce learners to JSON
     data, as well as how to read JSON data into R and how to convert the
     data into a data frame or array.
-:::
+    
+::::::::::::
 
-::: objectives
+::::::::::::::::::::::::::::::::::::::: objectives
+
 -   Describe the JSON data format
 -   Understand where JSON is typically used
 -   Appreciate some advantages of using JSON over tabular data
 -   Appreciate some disadvantages of processing JSON documents
 -   Use the jsonLite package to read a JSON file
--   Display formatted JSON as dataframe
--   Select and display nested dataframe fields from a JSON document
+-   Display formatted JSON as data frame
+-   Select and display nested data frame fields from a JSON document
 -   Write tabular data from selected elements from a JSON document to a
     csv file
-:::
+    
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::: questions
+:::::::::::::::::::::::::::::::::::::::: questions
+
 -   What is JSON format?
--   How can I convert JSON to an R dataframe?
+-   How can I convert JSON to an R data frame?
 -   How can I convert an array of JSON record into a table?
-:::
 
-## The JSON data format
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-The JSON data format was designed as a way of allowing different
-machines or processes within machines to communicate with each other by
-sending messages constructed in a well defined format. JSON is now the
-preferred data format used by APIs (Application Programming Interfaces).
+## The JSON Data Format
 
-The JSON format although somewhat verbose is not only Human readable but
-it can also be mapped very easily to an R dataframe.
+The JavaScript Object Notation, or JSON, is a text-based data format designed to 
+allow different machines to process or communicate data with each other. JSON data 
+instances, called "documents", are made up of key-value pairs (the equivalent of 
+column names and their corresponding values). Unlike CSVs, or other tabular data, 
+however, each JSON document is self-contained and does not require a consistent
+structure. This means that each document can have unique fields, or, for fields 
+that are shared across documents, can contain different data types.
 
-We are going to read a file of data formatted as JSON, convert it into a
-dataframe in R then selectively create a csv file from the extracted
-data.
+The data is also human-readable, making it simple to understand, edit, and debug. 
+As a result, JSON is now the preferred data format used by Application Programming 
+Interfaces (APIs) and, more importantly for this lesson, can be mapped very easily 
+to an R data frame!
 
-The JSON file we are going to use is the
-[checkin_snippet.json](data/checkin_snippet.json) file. This is the file
-we worked on earlier, just transformed, manipulated and converted into a
-json format
+Throughout this lesson, we are going to learn to read JSON-formatted data file, 
+convert it into a data frame in R, and selectively create a CSV file from the 
+extracted data (since JSON can be more difficult to process and display).
 
-### Advantages of JSON
+For this, we will be using `checkin_snippet.json`, a JSON-formatted fictional data 
+set based on the Anonymized Dataset.
 
--   Very popular data format for APIs (e.g. results from an Internet
-    search)
--   Human readable
--   Each record (or document as they are called) is self contained. The
-    equivalent of the column name and column values are in every record.
--   Documents do not all have to have the same structure within the same
-    file
--   Document structures can be complex and nested
+## Reading and Converting JSON Files
 
-### Disadvantages of JSON
-
--   It is more verbose than the equivalent data in csv format
--   Can be more difficult to process and display than csv formatted data
-
-## Use the JSON package to read a JSON file
-
-```{r, message=FALSE}
+To read JSON files, we will be using the **`jsonlite`** package (alongside the 
+**`tidyverse`**, **`here`**, and **`lubridate`**). Let's load in all of our required 
+packages below:
+```{r load-packages, message=FALSE}
 library(jsonlite)
+library(tidyverse)
+library(here)
+library(lubridate)
 ```
 
-As with reading in a CSV, you have a couple of options for how to access
-the JSON file.
+While both **`readr`** (from the **`tidyverse`**) and **`jsonlite`** provide a 
+function to read JSON files, each function has its own strengths and weaknesses 
+depending on the structure of the JSON file:
 
-You can read the JSON file directly into R with `read_json()` or the
-comparable `fromJSON()` function, though this does not download the
-file.
+1. **`read_json()`** (from **`readr`**) initially keeps the raw JSON structure 
+as a list, giving you full control over how the JSON file is converted into a 
+data frame. This is better for extremely nested or inconsistent JSON files, as 
+auto-conversion to a data frame may make mistakes. However, since it does not 
+convert manually, converting to a data frame/CSV file requires more steps.
 
-```{r eval=FALSE}
-json_data <- read_json(
-  "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/checkin_snippet.json"
+2. **`fromJSON()`** (from **`jsonlite`**) automatically parses JSON files into 
+data frames, allowing for quick, simple data analysis. This is better for structured 
+JSON files, as the chance of mistakes occurring during conversion is lower. However, 
+since it automatically converts to a data frame, you have little to no control over 
+how the JSON is initially converted.
+
+Throughout this lesson, we will be explaining how to complete each each using *both*
+functions! However, in practice, ensure you choose the appropriate function for 
+the JSON data you are working with. 
+
+### `read_json()`
+
+Let's begin by using the **`read_json()`** function to import our data into R:
+```{r readr-import, eval=FALSE}
+readr_data <- read_json(here("episodes", "data", "checkin_snippet.json"))
+```
+
+After running this code, we can see that a new List object called readr_data has 
+appeared in our Environment! Let's take a look at what this object looks like 
+using the `head(x, 1)` function:
+```{r readr-view, eval=FALSE}
+head(readr_data, 1)
+```
+
+As we can see, this object is near-identical to the format of our `checkin_snippet.json` 
+file! To convert this list into a data frame, we will be using the `map_dfr()` function. 
+This function iterates over every element in a list, applies a function, and combines 
+the results into a data fame.
+
+In our case, we are going through each element of readr_data, manually setting each 
+column of a tibble to each key-value pair in the JSON file, and adding each tibble 
+as a row of our larger, `readr_data` data frame! We will be using `tibble()` instead 
+of `data_frame()` because handles list-columns much safer:
+```{r readr-df, eval=FALSE}
+readr_data <- map_dfr(readr_data, function(x) {
+  tibble(
+    precinct_id = x$precinct_id,
+    polling_place = x$polling_place,
+    scanner_id = x$scanner_id,
+    arrival_summary = list(x$arrival_summary)
   )
+})
+
+head(readr_data)
 ```
 
-To download the file you can copy and paste the contents of the file on
-[GitHub](https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/checkin_snippet.json),
-creating a `checkin_snippet.json` file in your `data` directory, or you
-can download the file with R.
+After using the `map_dfr()` function, our data is now in a long format, with the 
+nested `arrival_summary` column including both the integer `total_arrivals` field 
+*and* character `first_arrival` and `last_arrival` fields. We can fix this applying 
+`unnest_wider()` to the `arrival_summary` column! 
 
-```{r download-data, eval=FALSE}
-download.file(
-  "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/checkin_snippet.json",
-   "data/checkin_snippet.json", mode = "wb")
+The `unnest_wider()` does the *exact same thing* as the `pivot_wider()` function 
+EXCEPT it works with already named lists (ie. does not need us to specify the names 
+of the lists):
+```{r readr-pivot, eval=FALSE}
+readr_data <- readr_data %>%
+  unnest_wider(arrival_summary)
+
+head(readr_data)
 ```
 
-Once you have the data downloaded, you can read it into R with
-`read_json()`:
+As you may notice, the `first_arrival` and `last_arrival` columns contain dates! 
+Thus, as our final step, we will be converting each of these columns to `ymd_hms`
+format instead:
+```{r readr-convert-2, eval=FALSE}
+readr_data <- readr_data %>%
+  mutate(
+    first_arrival = ymd_hms(first_arrival),
+    last_arrival = ymd_hms(last_arrival)
+  )
 
-```{r eval=FALSE}
-json_data <- read_json("data/checkin_snippet.json")
+head(readr_data)
 ```
 
-We can see that a new object called json_data has appeared in our
-Environment. It is described as a Large list (50 elements). In this
-current form, our data is messy. You can have a glimpse of it with the
-`head()` or `view()` functions. It will look not much more structured
-than if you were to open the JSON file with a text editor.
+Congratulations! We've finally converted our JSON data into a properly formatted 
+data frame.
 
-This is because, by default, the `read_json()` function's parameter
-`simplifyVector`, which specifies whether or not to simplify vectors is
-set to FALSE. This means that the default setting does not simplify
-nested lists into vectors and data frames. However, we can set this to
-TRUE, and our data will be read directly as a dataframe:
+Notably, **`read_json()`** has a `simplifyVector = TRUE` argument, which completes 
+a few of these steps for you! Let's re-read in our data, including this argument, 
+below:
+```{r readr-import-2, eval=FALSE}
+readr_data_2 <- read_json(here("episodes", "data", "checkin_snippet.json"), simplifyVector = TRUE)
 
-```{r}
-json_data <- read_json("data/checkin_snippet.json", simplifyVector = TRUE)
+head(readr_data_2)
 ```
 
-Now we can see we have this json data in a dataframe format. For
-consistency with the rest of the lesson, let's coerce it to be a tibble
-and use `glimpse` to take a peek inside (these functions were loaded by
-`library(tidyverse)`):
+As you can see, this creates a data frame, with an `arrival_summary` column that 
+includes a data frame within it. Below, we'll be completing all of the steps above, 
+but on the `readr_data_2` object instead:
 
-```{r}
-json_data <- json_data %>% as_tibble()
-glimpse(json_data)
+```{r readr-convert-2, eval=FALSE}
+readr_data_2 <- readr_data_2 %>%
+  unnest_wider(arrival_summary) %>%
+  mutate(
+    first_arrival = ymd_hms(first_arrival),
+    last_arrival = ymd_hms(last_arrival)
+  )
+
+head(readr_data_2)
 ```
 
-Looking good, but you might notice that actually we have a variable,
-*arival_summary* that is a dataframe! It is very important to know what
-you are expecting from your data to be able to look for things like
-this. For example, if you are getting your JSON from an API, have a look
-at the API documentation, so you know what to look for.
+As you can see, `readr_data_2` is identical to `readr_data`! In practice, however, 
+we DO NOT recommend using the `simplifyVector = TRUE` argument, as it completely
+nullifies the control **`read_json()`** gives over the conversion from JSON to 
+data frame and has the same issues as **`fromJSON()`** when dealing with extremely 
+nested or inconsistent JSON files.
 
-Often when we have a very large number of columns, it can become
-difficult to determine all the variables which may require some special
-attention, like lists. Fortunately, we can use special verbs like
-`where` to quickly select all the list columns.
+### `fromJSON()`
 
-```{r}
-json_data %>%
-    select(where(is.list)) %>%
-    glimpse()
+Let's begin by using the **`fromJSON()`** function to import our data into R:
+```{r json-import, eval=FALSE}
+json_data <- fromJSON(here("episodes", "data", "checkin_snippet.json"))
+
+head(json_data)
 ```
 
-So what can we do about *arival_summary*, the column of dataframes? Well
-first things first, we can access each one. For example to access the
-dataframe in the first row for the variable *arival_summary*, we can use
-the bracket (`[`) subsetting. Here we use single bracket, but you could
-also use double bracket (`[[`). The `[[` form allows only a single
-element to be selected using integer or character indices, whereas `[`
-allows indexing by vectors.
+As you may notice, this is *identical* to the result of running `readr_data_2 <- read_json(here( "data", "checkin_snippet.json"), simplifyVector = TRUE)`. Thus, we can apply the same 
+steps when converting to a formatted data frame:
 
-```{r}
-json_data$arrival_summary[1]
+```{r json-convert, eval=FALSE}
+json_data <- json_data %>%
+  unnest_wider(arrival_summary) %>%
+  mutate(
+    first_arrival = ymd_hms(first_arrival),
+    last_arrival = ymd_hms(last_arrival)
+  )
+
+
+head(json_data)
 ```
 
-We can also choose to view the nested dataframes at all the rows of our
-main dataframe where a particular condition is met (for example where
-the value for the variable *precinct* is equal to 2866) For this case we
-used the pipes we learned in a prior lesson:
+We'd like to note that the **`fromJSON()`** function includes a `flatten = TRUE` 
+argument that completes the unnest_wider() step for you! Below, let's import our 
+data using this argument:
+```{r json-import-2, eval=FALSE}
+json_data_2 <- fromJSON(here("episodes", "data", "checkin_snippet.json"), flatten = TRUE)
 
-```{r}
-json_data %>%
-  filter(precinct_id == 2866) %>%
-  pull(arrival_summary) 
+head(json_data_2)
 ```
 
-## Write the JSON file to csv
+As you can see, the only additional steps we need to take is renaming the columns 
+and converting the `first_arrival` and `last_arrival` columns to datetime format!
+We can do so below:
+```{r json-convert-2, eval=FALSE}
+json_data_2 <- json_data_2 %>%
+  rename(
+    total_arrivals = arrival_summary.total_arrivals,
+    first_arrival = arrival_summary.first_arrival,
+    last_arrival = arrival_summary.last_arrival
+  ) %>%
+  mutate(
+    first_arrival = ymd_hms(first_arrival),
+    last_arrival = ymd_hms(last_arrival)
+  )
 
-If we try to write our json_data dataframe to a csv as we would usually
-in a regular dataframe, we won't get the desired result. Using the
-`write_csv` function from the `{readr}` package won't give you an error
-for list columns, but you'll only see missing (i.e. `NA`) values in
-these columns.
-
-To write out as a csv while maintaining the data within the list
-columns, we will need to "flatten" these columns.
-
-```{r}
-flat_df <- fromJSON("data/checkin_snippet.json", flatten = TRUE)
+head(json_data_2)
 ```
 
-Now you can write this to a csv file:
+## Writing JSON to CSV
 
+Now that we've converted our JSON file into a properly formatted data frame using 
+both functions, let's write our file to a CSV! To do so, we will use the `write_csv()`
+function that we've used throughout our previous lessons.
+
+Here, we can finally export our `readr_data` data frame to a `voter_arrivals.csv` 
+file:
 ```{r, eval=FALSE}
-write_csv(flat_df, "data/voter_arrivals_flat.csv")
+write_csv(readr_data, "data/voter_arrivals.csv")
 ```
 
-Note: this means that when you read this csv back into R, the column of
-the nested dataframes will now be read in as a character vector.
-Converting it back to list to extract elements might be complicated, so
-it is probably better to keep storing these data in a JSON format if you
-will have to do this.
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-You can also write out the individual nested dataframes to a csv. For
-example:
+## Note
 
-```{r, eval=FALSE}
-write_csv(json_data$arrival_summary, "data/voter_arrivals_flat_nested.csv")
-```
+When reading your CSV back into R, your `first_arrival` and `last_arrival` columns
+will again be read in as characters/strings instead of dates. If you are ONLY formatting 
+a JSON into a CSV without additional analysis, you can technically skip the part 
+where you convert the columns into dates. 
+However, we recommend converting columns into proper data types to ensure if you 
+choose to complete analysis, you can do so!
 
-::: keypoints
--   JSON is a popular data format for transferring data used by a great
-    many Web based APIs
--   The complex structure of a JSON document means that it cannot easily
-    be 'flattened' into tabular data
--   We can use R code to extract values of interest and place them in a
-    csv file
-:::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+-   Understand what a JSON document is and what it's most common use cases are.
+-   Convert a JSON into a properly formatted data frame.
+-   Output a JSON file to a CSV file.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
