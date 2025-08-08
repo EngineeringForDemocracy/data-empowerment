@@ -58,7 +58,7 @@ convert it into a data frame in R, and selectively create a CSV file from the
 extracted data (since JSON can be more difficult to process and display).
 
 For this, we will be using `checkin_snippet.json`, a JSON-formatted fictional data 
-set based on the Anonymized Dataset.
+set based on the Check-In Dataset.
 
 ## Reading and Converting JSON Files
 
